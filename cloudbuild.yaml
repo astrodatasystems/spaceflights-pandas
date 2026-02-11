@@ -12,7 +12,7 @@ steps:
     args:
       - 'run'
       - 'jobs'
-      - 'create'
+      - 'update'
       - 'spaceflights-pipeline'
       - '--image=us-central1-docker.pkg.dev/gen-lang-client-0760156973/ml-prediction-repo/spaceflights-pandas:$COMMIT_SHA'
       - '--region=us-central1'
