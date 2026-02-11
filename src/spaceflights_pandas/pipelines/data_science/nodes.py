@@ -9,7 +9,7 @@ from sklearn.model_selection import train_test_split
 def split_data(data: pd.DataFrame, parameters: dict) -> tuple:
     """Splits data into features and targets training and test sets."""
     X = data[parameters["features"]]
-    y = data["price"]
+    y = data["cost"]
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=parameters["test_size"], random_state=parameters["random_state"]
     )
