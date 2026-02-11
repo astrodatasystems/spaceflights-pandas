@@ -1,0 +1,21 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/gen-lang-client-0760156973/ml-prediction-repo/spaceflights-pandas:$COMMIT_SHA', '.']
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'us-central1-docker.pkg.dev/gen-lang-client-0760156973/ml-prediction-repo/spaceflights-pandas:$COMMIT_SHA']
+
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'jobs'
+      - 'create'
+      - 'spaceflights-pipeline'
+      - '--image=us-central1-docker.pkg.dev/gen-lang-client-0760156973/ml-prediction-repo/spaceflights-pandas:$COMMIT_SHA'
+      - '--region=us-central1'
+      - '--memory=2Gi'
+      - '--task-timeout=30m'
+
+images:
+  - 'us-central1-docker.pkg.dev/gen-lang-client-0760156973/ml-prediction-repo/spaceflights-pandas:$COMMIT_SHA'
