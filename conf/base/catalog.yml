@@ -67,7 +67,7 @@ model_input_table:
 
 regressor:
   type: pickle.PickleDataset
-  filepath: data/06_models/regressor.pickle
+  filepath: gs://spaceflights-models-gen-lang-client-0760156973/models/regressor.pickle
   versioned: true
 
 shuttle_passenger_capacity_plot_exp:
