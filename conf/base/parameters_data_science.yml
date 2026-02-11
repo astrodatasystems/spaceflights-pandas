@@ -10,3 +10,5 @@ model_options:
     - iata_approved
     - company_rating
     - review_scores_rating
+  n_estimators: 100
+  max_depth: 10
